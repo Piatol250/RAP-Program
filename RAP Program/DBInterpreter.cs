@@ -20,7 +20,7 @@ namespace RAP_Program
             return (T)Enum.Parse(typeof(T), value);
         }
 
-        private static MySqlConnection GetConnection()
+        public static MySqlConnection GetConnection()
         {
             if (conn == null)
             {
