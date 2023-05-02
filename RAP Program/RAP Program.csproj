@@ -36,12 +36,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="DBInterpreter.cs" />
     <Compile Include="Publication.cs" />
     <Compile Include="PublicationController.cs" />
     <Compile Include="Researcher.cs" />
     <Compile Include="ResearcherController.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

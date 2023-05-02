@@ -49,25 +49,28 @@ namespace RAP_Program
                 {
                     if (rdr.GetString(1) == "Staff")
                     {
-                        researchers.Add(new Employee
+                        researchers.Add(new Staff
                         {
                             Id = rdr.GetInt32(0),
-                            Name = rdr.GetString(2) + " " + rdr.GetString(3),
+                            researcherType = TYPE.Employee,
+                            Given_Name = rdr.GetString(2),
+                            Family_Name = rdr.GetString(3),
                             Title = rdr.GetString(4),
                             Unit = rdr.GetString(5),
                             Campus = rdr.GetString(6),
                             Email = rdr.GetString(7),
                             Photo = rdr.GetString(8),
                             Level = ParseEnum<LEVEL>(rdr.GetString(11)),
-                            CommencedWithInstitution = rdr.GetDateTime(12),
-                            CommencedCurrentPosition = rdr.GetDateTime(13)
-                        });
+                            Tenure = (float)(DateTime.Today - rdr.GetDateTime(12)).TotalDays/365
+                        }) ;
                     }
                     else if (rdr.GetString(1) == "Student")
                     {
                         researchers.Add(new Student {
                             Id = rdr.GetInt32(0),
-                            Name = rdr.GetString(2) + " " + rdr.GetString(3),
+                            researcherType = TYPE.Student,
+                            Given_Name = rdr.GetString(2),
+                            Family_Name = rdr.GetString(3),
                             Title = rdr.GetString(4),
                             Unit = rdr.GetString(5),
                             Campus = rdr.GetString(6),
@@ -75,8 +78,7 @@ namespace RAP_Program
                             Photo = rdr.GetString(8),
                             Degree = rdr.GetString(9),
                             SupervisorID = rdr.GetInt32(10),
-                            CommencedWithInstitution = rdr.GetDateTime(12),
-                            CommencedCurrentPosition = rdr.GetDateTime(13)
+                            Tenure = (float)(DateTime.Today - rdr.GetDateTime(12)).TotalDays / 365
                         });
                     }
                 }

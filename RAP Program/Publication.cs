@@ -21,6 +21,11 @@ namespace RAP_Program
         public string CiteAs { get; set; }
         public DateTime AvailabilityDate { get; set; }
         public int Age { get; set; }
-        
+
+        public override string ToString()
+        {
+            return this.Title;
+        }
+
     }
 }
