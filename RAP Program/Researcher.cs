@@ -21,8 +21,9 @@ namespace RAP_Program
         public string Photo { get; set; }
         public string JobtTitle { get; set; }
         public int NumPublications { get; set; }
-        public List<Publication> Publications;
         public float Tenure { get; set; }
+        List<Position> Positions { get; set; }
+        public List<Publication> Publications;
 
         public override string ToString()
         {
