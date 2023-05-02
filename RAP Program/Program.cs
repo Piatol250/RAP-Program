@@ -32,6 +32,7 @@ namespace RAP_Program
                 Console.WriteLine(researcher);
             }
 
+            Console.ReadLine();
         }
     }
 }

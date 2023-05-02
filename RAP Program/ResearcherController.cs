@@ -16,7 +16,7 @@ namespace RAP_Program
             foreach(Researcher researcher in researchers)
             {
                 Console.WriteLine("Loaded " + researcher.Given_Name + " " + researcher.Family_Name + "\n" + "Tenure: " + researcher.Tenure);
-                researcher.Publications = DBInterpreter.loadPublications(researcher.Id);
+                researcher.Publications = PublicationController.loadPublications(researcher.Id);
             }
          
         }
