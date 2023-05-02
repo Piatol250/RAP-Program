@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace RAP_Program
         public static List<Publication> loadPublications(int id)
         {
             List<Publication> publications = new List<Publication>();
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = DBInterpreter.GetConnection();
             MySqlDataReader rdr = null;
             MySqlCommand getPub = new MySqlCommand("select pub.doi, title, ranking, authors, year, type, cite_as, available from publication as pub, researcher_publication as respub " +
                                                     "where pub.doi=respub.doi and researcher_id=?id", conn);
@@ -28,10 +29,10 @@ namespace RAP_Program
                     {
                         Doi = rdr.GetString(0),
                         Title = rdr.GetString(1),
-                        Rank = ParseEnum<RANKING>(rdr.GetString(2)),
+                        Rank = DBInterpreter.ParseEnum<RANKING>(rdr.GetString(2)),
                         Authors = rdr.GetString(3).Replace(" ", string.Empty).Split(','),
                         PublicationDate = rdr.GetInt32(4),
-                        Type = ParseEnum<PUBTYPE>(rdr.GetString(5)),
+                        Type = DBInterpreter.ParseEnum<PUBTYPE>(rdr.GetString(5)),
                         CiteAs = rdr.GetString(6),
                         AvailabilityDate = rdr.GetDateTime(7)
                     });
