@@ -17,14 +17,17 @@ namespace RAP_Program
 
             Console.WriteLine("Enter the type of researcher you want to filter by: ");
             type = Console.ReadLine();
-            if(type.ToLower() == "student")
+
+            switch(type.ToLower())
             {
+            case "student":
                 filter = TYPE.Student;
-            }
-            else if(type.ToLower() == "employee")
-            {
+                break;
+            case "employee":
                 filter = TYPE.Employee;
+                break;
             }
+            
             filteredResearchers = controller.filterResearchers(filter);
 
             foreach(Researcher researcher in filteredResearchers)
