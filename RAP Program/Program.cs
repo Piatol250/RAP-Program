@@ -10,6 +10,9 @@ namespace RAP_Program
     {
         public static void Main(string[] args)
         {
+            //TestDriver.Run();
+            //return;
+
             List<Researcher> filteredResearchers;
             ResearcherController controller = new ResearcherController();
             string type;
