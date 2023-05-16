@@ -10,6 +10,9 @@ namespace RAP_Program
     {
         public static void Main(string[] args)
         {
+            //TestDriver.Run();
+            //return;
+
             List<Researcher> filteredResearchers;
             ResearcherController controller = new ResearcherController();
             string type;
@@ -17,14 +20,17 @@ namespace RAP_Program
 
             Console.WriteLine("Enter the type of researcher you want to filter by: ");
             type = Console.ReadLine();
-            if(type.ToLower() == "student")
+
+            switch(type.ToLower())
             {
+            case "student":
                 filter = TYPE.Student;
-            }
-            else if(type.ToLower() == "employee")
-            {
+                break;
+            case "employee":
                 filter = TYPE.Employee;
+                break;
             }
+            
             filteredResearchers = controller.filterResearchers(filter);
 
             foreach(Researcher researcher in filteredResearchers)
@@ -32,6 +38,7 @@ namespace RAP_Program
                 Console.WriteLine(researcher);
             }
 
+            Console.ReadLine();
         }
     }
 }

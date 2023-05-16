@@ -49,7 +49,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data">
-      <HintPath>..\..\RAP Software Implementation\RAP Software Implementation\bin\Debug\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
