@@ -22,6 +22,7 @@ namespace RAP_Program
         public string JobtTitle { get; set; }
         public int NumPublications { get; set; }
         public float Tenure { get; set; }
+        public DateTime CommencedWithInstitution;
         public List<Position> Positions { get; set; }
         public List<Publication> Publications;
 

@@ -14,6 +14,7 @@ namespace RAP_Program
         private const string pass = "kit206";
         private const string server = "alacritas.cis.utas.edu.au";
         private static MySqlConnection conn = null;
+        private static readonly string fundingLocation = "C:\\Users\\bound\\source\\repos\\RAP Program\\RAP Program\\Fundings_Rankings.xml";
 
         public static T ParseEnum<T>(string value)
         {
@@ -65,6 +66,7 @@ namespace RAP_Program
                             Email = rdr.GetString(7),
                             Photo = rdr.GetString(8),
                             Level = ParseEnum<LEVEL>(rdr.GetString(11)),
+                            CommencedWithInstitution = rdr.GetDateTime(12),
                             Tenure = (float)(DateTime.Today - rdr.GetDateTime(12)).TotalDays/365
                         });
                     }
@@ -82,6 +84,7 @@ namespace RAP_Program
                             Photo = rdr.GetString(8),
                             Degree = rdr.GetString(9),
                             SupervisorID = rdr.GetInt32(10),
+                            CommencedWithInstitution = rdr.GetDateTime(12),
                             Tenure = (float)(DateTime.Today - rdr.GetDateTime(12)).TotalDays / 365
                         });
                     }
@@ -126,13 +129,13 @@ namespace RAP_Program
 
                 while (rdr.Read())
                 {
-                    positions.Add(new Position {    
-                                                Level= ParseEnum<EMPLOYMENTlEVEL>(rdr.GetString(1)),
-                                                start = rdr.GetDateTime(2),
-                                                                             
+                    positions.Add(new Position {
+                        Level = ParseEnum<EMPLOYMENTlEVEL>(rdr.GetString(1)),
+                        start = rdr.GetDateTime(2),
+
                     });
 
-                    if(rdr.GetValue(3) == null)
+                    if (rdr.GetValue(3) == null)
                     {
                         positions.Last().end = rdr.GetDateTime(3);
                     }
@@ -159,15 +162,12 @@ namespace RAP_Program
             }
 
             return positions;
-
         }
+        
 
-        /* public static List<Researcher> randomizeData(int numResearchers, int numPubs)
-         {
-
-         }
-        */
-    }
+        
+}
+        
 }
 
    

@@ -18,10 +18,6 @@ namespace RAP_Program
                 Console.WriteLine("Loaded " + researcher.Given_Name + " " + researcher.Family_Name + "\n" + "Tenure: " + researcher.Tenure);
                 researcher.Publications = PublicationController.loadPublications(researcher.Id);
                 researcher.Positions = DBInterpreter.loadPositions(researcher.Id);
-                for (int i = 0; i < researcher.Positions.Count; i++)
-                {
-                    Console.WriteLine(researcher.Positions[i]);
-                }
             }
             
          
