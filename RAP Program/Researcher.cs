@@ -22,7 +22,7 @@ namespace RAP_Program
         public string JobtTitle { get; set; }
         public int NumPublications { get; set; }
         public float Tenure { get; set; }
-        List<Position> Positions { get; set; }
+        public List<Position> Positions { get; set; }
         public List<Publication> Publications;
 
         public override string ToString()

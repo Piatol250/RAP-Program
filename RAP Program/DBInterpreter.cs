@@ -31,6 +31,10 @@ namespace RAP_Program
             return conn;
         }
 
+        /// <summary>
+        /// Iterates over all researcher information in the database, generates a researcher object, and adds this object to a list that is returned.
+        /// </summary>
+        /// <returns>List of researcher objects</returns>
         public static List<Researcher> loadResearchers()
         {
             List<Researcher> researchers = new List<Researcher>();
@@ -62,7 +66,7 @@ namespace RAP_Program
                             Photo = rdr.GetString(8),
                             Level = ParseEnum<LEVEL>(rdr.GetString(11)),
                             Tenure = (float)(DateTime.Today - rdr.GetDateTime(12)).TotalDays/365
-                        }) ;
+                        });
                     }
                     else if (rdr.GetString(1) == "Student")
                     {
@@ -102,13 +106,17 @@ namespace RAP_Program
             return researchers;
         }
 
-        public static List<Publication> loadPublications(int id)
+        /// <summary>
+        /// Iterates over all positions in the database, checks the researcher id of the position against the given researcher id and adds all 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static List<Position> loadPositions(int id)
         {
-            List<Publication> publications = new List<Publication>();
+            List<Position> positions = new List<Position>();
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
-            MySqlCommand getPub = new MySqlCommand("select pub.doi, title, ranking, authors, year, type, cite_as, available from publication as pub, researcher_publication as respub " +
-                                                    "where pub.doi=respub.doi and researcher_id=?id", conn);
+            MySqlCommand getPub = new MySqlCommand("select id, level, start, end from position as pos where pos.id=?id", conn);
             getPub.Parameters.AddWithValue("id", id);
 
             try
@@ -118,15 +126,20 @@ namespace RAP_Program
 
                 while (rdr.Read())
                 {
-                    publications.Add(new Publication { Doi = rdr.GetString(0),
-                                                       Title = rdr.GetString(1),
-                                                       Rank = ParseEnum<RANKING>(rdr.GetString(2)),
-                                                       Authors = rdr.GetString(3).Replace(" ", string.Empty).Split(','),
-                                                       PublicationDate = rdr.GetInt32(4),
-                                                       Type = ParseEnum<PUBTYPE>(rdr.GetString(5)),
-                                                       CiteAs = rdr.GetString(6),
-                                                       AvailabilityDate = rdr.GetDateTime(7)
+                    positions.Add(new Position {    
+                                                Level= ParseEnum<EMPLOYMENTlEVEL>(rdr.GetString(1)),
+                                                start = rdr.GetDateTime(2),
+                                                                             
                     });
+
+                    if(rdr.GetValue(3) == null)
+                    {
+                        positions.Last().end = rdr.GetDateTime(3);
+                    }
+                    else
+                    {
+                        positions.Last().end = DateTime.Now;
+                    }
                 }
             }
             catch (MySqlException e)
@@ -145,7 +158,7 @@ namespace RAP_Program
                 }
             }
 
-            return publications;
+            return positions;
 
         }
 

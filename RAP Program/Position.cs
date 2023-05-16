@@ -9,10 +9,17 @@ namespace RAP_Program
     enum EMPLOYMENTlEVEL { A, B, C, D, E }
     internal class Position
     {
-        public EMPLOYMENTlEVEL level;
-        public DateTime start;
-        public DateTime endl;
+        public EMPLOYMENTlEVEL Level { get; set; }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
+
+        public override string ToString()
+        {
+            return start.ToString();
+        }
     }
+
+
 
    
 }
