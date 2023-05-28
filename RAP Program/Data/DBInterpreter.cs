@@ -18,8 +18,7 @@ namespace RAP_Program
         private const string pass = "kit206";
         private const string server = "alacritas.cis.utas.edu.au";
         private static MySqlConnection conn = null;
-        private static string name = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-        private static readonly string fundingLocation = name+"\\source\\repos\\RAP Program\\RAP Program\\Data\\Fundings_Rankings.xml";
+        private static readonly string fundingLocation = "../../Data/Fundings_Rankings.xml";
         private static XmlDocument fundingData = new XmlDocument();
         
        
