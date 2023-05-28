@@ -36,15 +36,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Position.cs" />
+    <Compile Include="Entity\Position.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="DBInterpreter.cs" />
-    <Compile Include="Publication.cs" />
-    <Compile Include="PublicationController.cs" />
-    <Compile Include="Researcher.cs" />
-    <Compile Include="ResearcherController.cs" />
-    <Compile Include="Staff.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="Data\DBInterpreter.cs" />
+    <Compile Include="Entity\Publication.cs" />
+    <Compile Include="Controller\PublicationController.cs" />
+    <Compile Include="Entity\Researcher.cs" />
+    <Compile Include="Controller\ResearcherController.cs" />
+    <Compile Include="Entity\Staff.cs" />
+    <Compile Include="Entity\Student.cs" />
+    <Compile Include="Testing\PublicationTests.cs" />
+    <Compile Include="Testing\TestDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Fundings_Rankings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
