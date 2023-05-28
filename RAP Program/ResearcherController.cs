@@ -18,9 +18,13 @@ namespace RAP_Program
                 Console.WriteLine("Loaded " + researcher.Given_Name + " " + researcher.Family_Name + "\n" + "Tenure: " + researcher.Tenure);
                 researcher.Publications = PublicationController.loadPublications(researcher.Id);
                 researcher.Positions = DBInterpreter.loadPositions(researcher.Id);
+                
+                if(researcher.researcherType == TYPE.Staff)
+                {
+                    ((Staff)researcher).FundingReceived = DBInterpreter.getFunding(researcher.Id);
+                    Console.WriteLine(((Staff)researcher).FundingReceived);
+                }
             }
-            
-         
         }
 
         public List<Researcher> filterResearchers(TYPE researcherType)

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
+
+
 
 namespace RAP_Program
 {
@@ -14,8 +18,11 @@ namespace RAP_Program
         private const string pass = "kit206";
         private const string server = "alacritas.cis.utas.edu.au";
         private static MySqlConnection conn = null;
-        private static readonly string fundingLocation = "C:\\Users\\bound\\source\\repos\\RAP Program\\RAP Program\\Fundings_Rankings.xml";
-
+        private static string name = System.Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        private static readonly string fundingLocation = name+"\\source\\repos\\RAP Program\\RAP Program\\Fundings_Rankings.xml";
+        private static XmlDocument fundingData = new XmlDocument();
+        
+       
         public static T ParseEnum<T>(string value)
         {
             return (T)Enum.Parse(typeof(T), value);
@@ -57,7 +64,7 @@ namespace RAP_Program
                         researchers.Add(new Staff
                         {
                             Id = rdr.GetInt32(0),
-                            researcherType = TYPE.Employee,
+                            researcherType = TYPE.Staff,
                             Given_Name = rdr.GetString(2),
                             Family_Name = rdr.GetString(3),
                             Title = rdr.GetString(4),
@@ -165,7 +172,27 @@ namespace RAP_Program
         }
         
 
-        
+        public static int getFunding(int id)
+        {
+            int totalFunding = 0;
+            XmlNodeList fundingNodes;
+
+            fundingData.Load(fundingLocation);
+            fundingNodes = fundingData.SelectNodes("/Projects/Project");
+
+            foreach (XmlNode fundingInfo in fundingNodes)
+            {
+                //Converts the content of the last child attribute of the current node, that being the combined id of the researchers, into an array of the researcher ids
+                string[] splitString = string.Join(string.Empty, fundingInfo.LastChild.InnerText.Select((x, i) => i > 0 && i % 6 == 0 ? string.Format(" {0}", x) : x.ToString())).Split(' ');
+
+                if (splitString.Contains(id.ToString()))
+                {
+                    totalFunding += Int32.Parse(fundingInfo.FirstChild.InnerText);
+                }
+            }
+            
+            return totalFunding;
+        }
 }
         
 }

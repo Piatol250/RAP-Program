@@ -27,7 +27,7 @@ namespace RAP_Program
                 filter = TYPE.Student;
                 break;
             case "employee":
-                filter = TYPE.Employee;
+                filter = TYPE.Staff;
                 break;
             }
             

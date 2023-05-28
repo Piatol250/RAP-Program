@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RAP_Program
 {
     public enum LEVEL { A, B, C, D, E }
-    public enum TYPE { Employee, Student}
+    public enum TYPE { Staff, Student}
     internal class Researcher
     {
         public TYPE researcherType { get; set; }
