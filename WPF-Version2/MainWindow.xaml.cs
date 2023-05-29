@@ -48,9 +48,6 @@ namespace RAP_WPF
             if (e.AddedItems.Count > 0)
             {
                 Researcher currResearcher = (Researcher)e.AddedItems[0];
-                //After Task 4 done, this is not really needed
-                //MessageBox.Show("The selected item is: " + e.AddedItems[0]);
-                //Part of task 4
                 DetailsPanel.DataContext = e.AddedItems[0];
                 PositionList.ItemsSource = researcherController.getPositions(currResearcher);
                 image.Source = researcherController.getPhoto(currResearcher);

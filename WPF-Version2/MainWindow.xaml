@@ -59,7 +59,7 @@
                 <Label Content="Previous Positions:"></Label>
             </StackPanel>
         </StackPanel>
-        <Image x:Name ="image" HorizontalAlignment="Left" Height="129" Margin="411,0,0,0" VerticalAlignment="Top" Width="152"/>
+        <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="433,0,0,0" VerticalAlignment="Top" Width="101"/>
 
 
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace RAP_Program_WPF
@@ -61,10 +62,14 @@ namespace RAP_Program_WPF
         public BitmapImage getPhoto(Researcher researcher)
         {
             BitmapImage bitmap = new BitmapImage();
+            BitmapImage resized;
+            
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(researcher.Photo, UriKind.Absolute);
+            bitmap.DecodePixelHeight = 101;
+            bitmap.DecodePixelWidth = 90;
             bitmap.EndInit();
-
+           
             return bitmap;
         }
         public void filterResearchersByLevel(LEVEL level)
