@@ -62,7 +62,6 @@ namespace RAP_Program_WPF
         public BitmapImage getPhoto(Researcher researcher)
         {
             BitmapImage bitmap = new BitmapImage();
-            BitmapImage resized;
             
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(researcher.Photo, UriKind.Absolute);
