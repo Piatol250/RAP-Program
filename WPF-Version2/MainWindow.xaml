@@ -16,7 +16,7 @@
         </ListBox>
         <ListBox x:Name ="researcherListBox" SelectionChanged="researcherListBox_SelectionChanged"
                  d:ItemsSource="{Binding Source={StaticResource researcherList}}" 
-                 Width="268" Margin="0,23,532,0"/>
+                 Width="268" Margin="0,23,532,0" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}"/>
         <ComboBox HorizontalAlignment="Left" Margin="148,0,0,0" VerticalAlignment="Top" Width="120"
                   ItemsSource = "{Binding Source = {StaticResource Levels}}"
                   SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Height="23"/>
@@ -27,9 +27,9 @@
                 <Label Content="{Binding Path=Given_Name}"></Label>
                 <Label Content = "{Binding Path=Family_Name}"></Label>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Title:"></Label>
-                <Label Content="{Binding Path=Title}"></Label>
+            <StackPanel Orientation="Horizontal" Width="268">
+                <Label Content="Title:"/>
+                <Label Content="{Binding Title}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Unit:"></Label>
@@ -59,7 +59,8 @@
                 <Label Content="Previous Positions:"></Label>
             </StackPanel>
         </StackPanel>
-        
+        <Image x:Name ="image" HorizontalAlignment="Left" Height="129" Margin="411,0,0,0" VerticalAlignment="Top" Width="152"/>
+
 
 
     </Grid>

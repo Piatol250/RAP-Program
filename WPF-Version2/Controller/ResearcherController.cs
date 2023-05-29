@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace RAP_Program_WPF
 {
@@ -55,6 +58,15 @@ namespace RAP_Program_WPF
             return positions;
         }
 
+        public BitmapImage getPhoto(Researcher researcher)
+        {
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(researcher.Photo, UriKind.Absolute);
+            bitmap.EndInit();
+
+            return bitmap;
+        }
         public void filterResearchersByLevel(LEVEL level)
         {
             var filtered = from Researcher researcher in researchers
