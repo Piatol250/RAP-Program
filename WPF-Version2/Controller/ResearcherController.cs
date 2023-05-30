@@ -10,73 +10,73 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Controller
 {
     internal class ResearcherController
     {
-        private List<Researcher> researchers;
-        public List<Researcher> Researchers { get { return researchers; } set{ } }
-        private ObservableCollection<Researcher> viewableResearchers;
-        public ObservableCollection<Researcher> VisibleResearchers { get { return viewableResearchers; } set { } }
+        private List<Entity.Researcher> researchers;
+        public List<Entity.Researcher> Researchers { get { return researchers; } set{ } }
+        private ObservableCollection<Entity.Researcher> viewableResearchers;
+        public ObservableCollection<Entity.Researcher> VisibleResearchers { get { return viewableResearchers; } set { } }
 
         public ResearcherController()
         {
-            researchers = DBInterpreter.loadResearchers();
+            researchers = Data.DBInterpreter.loadResearchers();
 
-            foreach(Researcher researcher in researchers)
+            foreach(Entity.Researcher researcher in researchers)
             {
                 researcher.Publications = PublicationController.loadPublications(researcher.Id);
-                researcher.Positions = DBInterpreter.loadPositions(researcher.Id);
+                researcher.Positions = Data.DBInterpreter.loadPositions(researcher.Id);
                 
-                if(researcher.EmploymentLevel != LEVEL.Student)
+                if(researcher.EmploymentLevel != Entity.LEVEL.Student)
                 {
-                    ((Staff)researcher).FundingReceived = DBInterpreter.getFunding(researcher.Id);
-                    ((Staff)researcher).Supervisions = new List<Student>();
+                    ((Entity.Staff)researcher).FundingReceived = Data.DBInterpreter.getFunding(researcher.Id);
+                    ((Entity.Staff)researcher).Supervisions = new List<Entity.Student>();
 
-                    foreach (Researcher student in researchers)
+                    foreach (Entity.Researcher student in researchers)
                     {
-                        if(student.EmploymentLevel == LEVEL.Student && ((Student)(student)).SupervisorID == researcher.Id)
+                        if(student.EmploymentLevel == Entity.LEVEL.Student && ((Entity.Student)(student)).SupervisorID == researcher.Id)
                         {
-                            ((Staff)(researcher)).Supervisions.Add((Student)student);
+                            ((Entity.Staff)(researcher)).Supervisions.Add((Entity.Student)student);
                         }   
                     }
                 }
                 else
                 {
-                    ((Student)(researcher)).Supervisor = getStaffById(((Student)(researcher)).SupervisorID);
+                    ((Entity.Student)(researcher)).Supervisor = getStaffById(((Entity.Student)(researcher)).SupervisorID);
                 }
             }
-            viewableResearchers = new ObservableCollection<Researcher>(researchers);
+            viewableResearchers = new ObservableCollection<Entity.Researcher>(researchers);
         }
 
-        public Staff getStaffById(int id)
+        public Entity.Staff getStaffById(int id)
         {
-            Staff match = null;
+            Entity.Staff match = null;
 
-            foreach(Researcher researcher in researchers)
+            foreach(Entity.Researcher researcher in researchers)
             {
-                if(researcher.EmploymentLevel != LEVEL.Student && researcher.Id == id)
+                if(researcher.EmploymentLevel != Entity.LEVEL.Student && researcher.Id == id)
                 {
-                    match = (Staff)researcher;
+                    match = (Entity.Staff)researcher;
                 }
             }
 
             return match;
         }
 
-        public ObservableCollection<Researcher> GetViewableList()
+        public ObservableCollection<Entity.Researcher> GetViewableList()
         {
             Console.WriteLine(VisibleResearchers);
             return VisibleResearchers;
         }
 
-        public ObservableCollection<string> getPositions(Researcher researcher)
+        public ObservableCollection<string> getPositions(Entity.Researcher researcher)
         {
             ObservableCollection<string> positions = new ObservableCollection<string>();
 
             if(researcher.Positions.Count > 1)
             {
-                foreach (Position position in researcher.Positions)
+                foreach (Entity.Position position in researcher.Positions)
                 {
                     if(position != researcher.Positions.Last())
                     {
@@ -88,7 +88,7 @@ namespace RAP_Program_WPF
             return positions;
         }
 
-        public BitmapImage getPhoto(Researcher researcher)
+        public BitmapImage getPhoto(Entity.Researcher researcher)
         {
             BitmapImage bitmap = new BitmapImage();
             
@@ -101,9 +101,9 @@ namespace RAP_Program_WPF
             return bitmap;
         }
 
-        public void filterResearchersByLevel(LEVEL level)
+        public void filterResearchersByLevel(Entity.LEVEL level)
         {
-            var filtered = from Researcher researcher in researchers
+            var filtered = from Entity.Researcher researcher in researchers
                            where researcher.EmploymentLevel == level
                            select researcher;
 
@@ -113,7 +113,7 @@ namespace RAP_Program_WPF
 
         public void filterResearchersByName(String filterText)
         {
-            var filtered = from Researcher researcher in researchers
+            var filtered = from Entity.Researcher researcher in researchers
                            where researcher.Given_Name.ToLower().Contains(filterText.ToLower()) || researcher.Family_Name.ToLower().Contains(filterText.ToLower())
                            select researcher;
             viewableResearchers.Clear();

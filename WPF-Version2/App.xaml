@@ -1,18 +1,19 @@
 ﻿<Application x:Class="RAP_WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RAP_Program_WPF"
+             xmlns:entity="clr-namespace:RAP_WPF.Entity"
+             xmlns:controller="clr-namespace:RAP_WPF.Controller"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <local:ResearcherController x:Key="ResearcherController"/>
+        <controller:ResearcherController x:Key="ResearcherController"/>
 
         <ObjectDataProvider x:Key="researcherList"
                             ObjectInstance="{StaticResource ResearcherController}"
                             MethodName="GetViewableList">
         </ObjectDataProvider>
 
-        <local:PublicationController x:Key="PublicationController"/>
+        <controller:PublicationController x:Key="PublicationController"/>
 
         <ObjectDataProvider x:Key="publicationList"
                             ObjectInstance="{StaticResource PublicationController}"
@@ -23,7 +24,7 @@
                             ObjectType="{x:Type sys:Enum}"
                             MethodName="GetValues">
             <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="local:LEVEL"/>
+                <x:Type TypeName="entity:LEVEL"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Application.Resources>

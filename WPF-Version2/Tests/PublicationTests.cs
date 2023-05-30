@@ -2,23 +2,23 @@
 using RAP_WPF.Tests;
 using System.Collections.Generic;
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Tests
 {
     internal class PositionTests
     {
-        public static void Collect(List<TestDriver.RunType> tests)
+        public static void Collect(List<RunType> tests)
         {
-            tests.Add(new TestDriver.RunType("load publications from an ID which doesn't exist", () =>
+            tests.Add(new RunType("load publications from an ID which doesn't exist", () =>
                 {
-                    List<Publication> all = PublicationController.loadPublications(-1);
+                    List<Entity.Publication> all = Controller.PublicationController.loadPublications(-1);
                     
                     return (all.Count == 0);
                 }
             ));
 
-            tests.Add(new TestDriver.RunType("load publications from an id which does exist", () =>
+            tests.Add(new RunType("load publications from an id which does exist", () =>
                 {
-                    List<Publication> all = PublicationController.loadPublications(2);
+                    List<Entity.Publication> all = Controller.PublicationController.loadPublications(2);
                     
                     return (all.Count != 0);
                 }

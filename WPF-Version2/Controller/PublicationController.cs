@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Controller
 { 
     internal class PublicationController
     {
-        public static List<Publication> loadPublications(int id)
+        public static List<Entity.Publication> loadPublications(int id)
         {
-            List<Publication> publications = new List<Publication>();
-            MySqlConnection conn = DBInterpreter.GetConnection();
+            List<Entity.Publication> publications = new List<Entity.Publication>();
+            MySqlConnection conn = Data.DBInterpreter.GetConnection();
             MySqlDataReader rdr = null;
             MySqlCommand getPub = new MySqlCommand("select pub.doi, title, ranking, authors, year, type, cite_as, available from publication as pub, researcher_publication as respub " +
                                                     "where pub.doi=respub.doi and researcher_id=?id", conn);
@@ -25,14 +25,14 @@ namespace RAP_Program_WPF
 
                 while (rdr.Read())
                 {
-                    publications.Add(new Publication
+                    publications.Add(new Entity.Publication
                     {
                         Doi = rdr.GetString(0),
                         Title = rdr.GetString(1),
-                        Rank = DBInterpreter.ParseEnum<RANKING>(rdr.GetString(2)),
+                        Rank = Data.DBInterpreter.ParseEnum<Entity.RANKING>(rdr.GetString(2)),
                         Authors = rdr.GetString(3),
                         PublicationYear = rdr.GetInt32(4),
-                        Type = DBInterpreter.ParseEnum<PUBTYPE>(rdr.GetString(5)),
+                        Type = Data.DBInterpreter.ParseEnum<Entity.PUBTYPE>(rdr.GetString(5)),
                         CiteAs = rdr.GetString(6),
                         AvailabilityDate = rdr.GetDateTime(7)
                     }) ;
@@ -58,9 +58,9 @@ namespace RAP_Program_WPF
 
         }
 
-        public List<Publication> sortPublications(Researcher researcher)
+        public List<Entity.Publication> sortPublications(Entity.Researcher researcher)
         {
-            List<Publication> sorted = new List<Publication>();
+            List<Entity.Publication> sorted = new List<Entity.Publication>();
 
             sorted = researcher.Publications.OrderBy(x => x.PublicationYear)
                                     .ThenBy(x => x.Title)
@@ -69,7 +69,7 @@ namespace RAP_Program_WPF
             return sorted;
         }
 
-        public List<Publication> GetPublications(Researcher Current)
+        public List<Entity.Publication> GetPublications(Entity.Researcher Current)
         {
             return Current.Publications;
         }

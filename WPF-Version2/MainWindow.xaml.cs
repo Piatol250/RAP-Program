@@ -1,4 +1,4 @@
-﻿using RAP_Program_WPF;
+﻿using RAP_WPF;
 using System;
 using System.Linq;
 using System.Windows;
@@ -14,13 +14,13 @@ namespace RAP_WPF
     public partial class MainWindow : Window
     {
         private const string RESEARCHER_LIST_KEY = "researcherList"; //used to access the researchercontroller object
-        private ResearcherController researcherController; //used to control a list of researchers, allows the filtering and creation of the list
-        private PublicationController publicationController = new PublicationController();
+        private Controller.ResearcherController researcherController; //used to control a list of researchers, allows the filtering and creation of the list
+        private Controller.PublicationController publicationController = new Controller.PublicationController();
 
         public MainWindow()
         {
             InitializeComponent();
-            researcherController = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+            researcherController = (Controller.ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
         }
 
 
@@ -38,7 +38,7 @@ namespace RAP_WPF
             {
                 if (researcherController != null)
                 {
-                    researcherController.filterResearchersByLevel(DBInterpreter.ParseEnum<LEVEL>(e.AddedItems[0].ToString()));
+                    researcherController.filterResearchersByLevel(Data.DBInterpreter.ParseEnum<Entity.LEVEL>(e.AddedItems[0].ToString()));
                 }
                 else
                 {
@@ -51,16 +51,16 @@ namespace RAP_WPF
             if (e.AddedItems.Count > 0)
             {
                 ResearcherDetailsPanel.DataContext = e.AddedItems[0];
-                PositionList.ItemsSource = researcherController.getPositions((Researcher)e.AddedItems[0]);
-                image.Source = researcherController.getPhoto((Researcher)e.AddedItems[0]);
-                Publications.ItemsSource = publicationController.sortPublications((Researcher)e.AddedItems[0]);
+                PositionList.ItemsSource = researcherController.getPositions((Entity.Researcher)e.AddedItems[0]);
+                image.Source = researcherController.getPhoto((Entity.Researcher)e.AddedItems[0]);
+                Publications.ItemsSource = publicationController.sortPublications((Entity.Researcher)e.AddedItems[0]);
             }
         }
 
         private void getCumulativeCount(object sender, RoutedEventArgs e)
         {
             string publications;
-            publications = string.Join(Environment.NewLine, ((Researcher)(ResearcherDetailsPanel.DataContext)).CumulativeCount);
+            publications = string.Join(Environment.NewLine, ((Entity.Researcher)(ResearcherDetailsPanel.DataContext)).CumulativeCount);
 
             MessageBox.Show(publications);
         }
@@ -68,7 +68,7 @@ namespace RAP_WPF
         private void getSuperVisions(object sender, RoutedEventArgs e)
         {
             string supervisions;
-            supervisions = string.Join(Environment.NewLine, ((Staff)(ResearcherDetailsPanel.DataContext)).Supervisions);
+            supervisions = string.Join(Environment.NewLine, ((Entity.Staff)(ResearcherDetailsPanel.DataContext)).Supervisions);
 
             MessageBox.Show(supervisions);
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Entity
 {
     enum EMPLOYMENTlEVEL { A, B, C, D, E }
     internal class Position

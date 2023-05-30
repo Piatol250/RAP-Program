@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Data
 {
     abstract class DBInterpreter
     {
@@ -42,9 +42,9 @@ namespace RAP_Program_WPF
         /// Iterates over all researcher information in the database, generates a researcher object, and adds this object to a list that is returned.
         /// </summary>
         /// <returns>List of researcher objects</returns>
-        public static List<Researcher> loadResearchers()
+        public static List<Entity.Researcher> loadResearchers()
         {
-            List<Researcher> researchers = new List<Researcher>();
+            List<Entity.Researcher> researchers = new List<Entity.Researcher>();
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
             MySqlCommand getInfo = new MySqlCommand("select id, type, given_name, family_name, title, unit, " +
@@ -60,7 +60,7 @@ namespace RAP_Program_WPF
                 {
                     if (rdr.GetString(1) == "Staff")
                     {
-                        researchers.Add(new Staff
+                        researchers.Add(new Entity.Staff
                         {
                             Id = rdr.GetInt32(0),
                             Given_Name = rdr.GetString(2),
@@ -70,16 +70,16 @@ namespace RAP_Program_WPF
                             Campus = rdr.GetString(6),
                             Email = rdr.GetString(7),
                             Photo = rdr.GetString(8),
-                            EmploymentLevel = ParseEnum<LEVEL>(rdr.GetString(11)),
+                            EmploymentLevel = ParseEnum<Entity.LEVEL>(rdr.GetString(11)),
                             CommencedWithInstitution = rdr.GetDateTime(12),
                             Tenure = Math.Round(((Decimal)(DateTime.Today - rdr.GetDateTime(12)).TotalDays/365), 2).ToString() + " years"
                         });
                     }
                     else if (rdr.GetString(1) == "Student")
                     {
-                        researchers.Add(new Student {
+                        researchers.Add(new Entity.Student {
                             Id = rdr.GetInt32(0),
-                            EmploymentLevel = LEVEL.Student,
+                            EmploymentLevel = Entity.LEVEL.Student,
                             Given_Name = rdr.GetString(2),
                             Family_Name = rdr.GetString(3),
                             Title = rdr.GetString(4),
@@ -119,9 +119,9 @@ namespace RAP_Program_WPF
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static List<Position> loadPositions(int id)
+        public static List<Entity.Position> loadPositions(int id)
         {
-            List<Position> positions = new List<Position>();
+            List<Entity.Position> positions = new List<Entity.Position>();
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
             MySqlCommand getPub = new MySqlCommand("select id, level, start, end from position as pos where pos.id=?id", conn);
@@ -134,8 +134,8 @@ namespace RAP_Program_WPF
 
                 while (rdr.Read())
                 {
-                    positions.Add(new Position {
-                        Level = ParseEnum<EMPLOYMENTlEVEL>(rdr.GetString(1)),
+                    positions.Add(new Entity.Position {
+                        Level = ParseEnum<Entity.EMPLOYMENTlEVEL>(rdr.GetString(1)),
                         start = rdr.GetDateTime(2),
 
                     });
