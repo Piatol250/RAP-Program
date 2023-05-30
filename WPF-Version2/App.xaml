@@ -20,12 +20,11 @@
                             MethodName="GetPublications">
         </ObjectDataProvider>
 
-        <ObjectDataProvider x:Key="Levels"
-                            ObjectType="{x:Type sys:Enum}"
-                            MethodName="GetValues">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="entity:LEVEL"/>
-            </ObjectDataProvider.MethodParameters>
+        <entity:Researcher x:Key="Researcher"/>
+
+        <ObjectDataProvider x:Key="researcherLevelsList"
+                            ObjectInstance="{StaticResource Researcher}"
+                            MethodName="GetAllLevels">
         </ObjectDataProvider>
     </Application.Resources>
 </Application>

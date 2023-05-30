@@ -38,7 +38,7 @@ namespace RAP_WPF
             {
                 if (researcherController != null)
                 {
-                    researcherController.filterResearchersByLevel(Data.DBInterpreter.ParseEnum<Entity.LEVEL>(e.AddedItems[0].ToString()));
+                    researcherController.filterResearchersByLevel(Entity.Researcher.ConvertLevelStringToEnum(e.AddedItems[0].ToString()));
                 }
                 else
                 {

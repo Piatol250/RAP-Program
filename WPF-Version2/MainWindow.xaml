@@ -22,11 +22,11 @@
         <ListBox x:Name ="researcherListBox" SelectionChanged="researcherListBox_SelectionChanged"
                  d:ItemsSource="{Binding Source={StaticResource researcherList}}" Margin="1,23,688,10" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Top" Width="120"
-                  ItemsSource = "{Binding Source = {StaticResource Levels}}"
+        <ComboBox HorizontalAlignment="Left" Margin="66,0,0,0" VerticalAlignment="Top" Width="140"
+                  ItemsSource = "{Binding Source = {StaticResource researcherLevelsList}}"
                   SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Height="23" Grid.Column="1"/>
 
-        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Height="23" KeyUp="searchBox_keyup" Grid.ColumnSpan="2"/>
+        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="23" KeyUp="searchBox_keyup" Grid.ColumnSpan="2"/>
 
         <StackPanel x:Name ="ResearcherDetailsPanel" Margin="206,-8,109,0" Orientation="Vertical" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
