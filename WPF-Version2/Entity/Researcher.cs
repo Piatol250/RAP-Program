@@ -44,7 +44,7 @@ namespace RAP_Program_WPF
             } 
         }
         public int NumPublications { get { return Publications.Count; } set { } }
-        public Decimal Tenure { get; set; }
+        public string Tenure { get; set; }
         public DateTime CommencedWithInstitution { get; set; }
         public DateTime CommencedCurrentPostion 
         { get 

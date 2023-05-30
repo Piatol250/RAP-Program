@@ -1,4 +1,6 @@
 ﻿using RAP_Program_WPF;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -51,9 +53,17 @@ namespace RAP_WPF
                 DetailsPanel.DataContext = e.AddedItems[0];
                 PositionList.ItemsSource = researcherController.getPositions(currResearcher);
                 image.Source = researcherController.getPhoto(currResearcher);
+                Count.DataContext = e.AddedItems[0];
             }
         }
 
+        private void getCumulativeCount(object sender, RoutedEventArgs e)
+        {
+            string publications;
+            publications = string.Join(Environment.NewLine, researcherController.getCumulativeCount((Researcher)Count.DataContext));
+
+            MessageBox.Show(publications);
+        }
         
     }
 }

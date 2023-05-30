@@ -58,6 +58,8 @@ namespace RAP_Program_WPF
 
         }
 
+        
+
         public List<Publication> GetPublications(Researcher Current)
         {
             return Current.Publications;

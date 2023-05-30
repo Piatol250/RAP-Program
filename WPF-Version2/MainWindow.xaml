@@ -5,23 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RAP_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="485" Width="800">
     <Grid>
-        <ListBox x:Name ="PositionList" Margin="268,229,264,113">
+        <ListBox x:Name ="PositionList" Margin="268,229,264,175">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
+
         <ListBox x:Name ="researcherListBox" SelectionChanged="researcherListBox_SelectionChanged"
                  d:ItemsSource="{Binding Source={StaticResource researcherList}}" 
                  Width="268" Margin="0,23,532,0" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}"/>
+
         <ComboBox HorizontalAlignment="Left" Margin="148,0,0,0" VerticalAlignment="Top" Width="120"
                   ItemsSource = "{Binding Source = {StaticResource Levels}}"
                   SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Height="23"/>
-        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Name or Last Name" VerticalAlignment="Top" Width="148" Height="23" KeyUp="searchBox_keyup"/>
-        <StackPanel x:Name ="DetailsPanel" Margin="268,-8,264,0" Width="268" Orientation="Vertical">
+
+        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148" Height="23" KeyUp="searchBox_keyup"/>
+
+        <StackPanel x:Name ="DetailsPanel" Margin="265,-8,264,0" Width="268" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name:"></Label>
                 <Label Content="{Binding Path=Given_Name}"></Label>
@@ -58,10 +62,18 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Previous Positions:"></Label>
             </StackPanel>
+            <StackPanel Height="60"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Tenure:"/>
+                <Label Content="{Binding Tenure}"/>
+                <Label Content="Publications:"/>
+                <Label Content="{Binding NumPublications}"/>
+            </StackPanel>
         </StackPanel>
+
         <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="433,0,0,0" VerticalAlignment="Top" Width="101"/>
 
-
+        <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="477,290,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9"/>
 
     </Grid>
 </Window>

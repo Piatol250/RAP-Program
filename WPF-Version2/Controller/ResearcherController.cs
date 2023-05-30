@@ -71,6 +71,40 @@ namespace RAP_Program_WPF
            
             return bitmap;
         }
+
+        public int getPubsInYear(int year, Researcher researcher)
+        {
+            int count = 0; 
+
+            foreach(Publication pub in researcher.Publications)
+            {
+                if(pub.PublicationDate == year)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public List<string> getCumulativeCount(Researcher researcher)
+        {
+            List<string> cumulativeCount = new List<string>();
+            List<int> years = new List<int>();
+            int currentYear = researcher.CommencedWithInstitution.Year;
+
+            for(int i = 0; i < (DateTime.Now.Year-researcher.CommencedWithInstitution.Year); i++)
+            {
+                years.Add(currentYear + i);    
+            }
+            
+
+            foreach(int year in years) 
+            {
+                cumulativeCount.Add(year.ToString() + ": " + getPubsInYear(year, researcher).ToString());
+            }
+                
+            
+            return cumulativeCount;
+        }
         public void filterResearchersByLevel(LEVEL level)
         {
             var filtered = from Researcher researcher in researchers

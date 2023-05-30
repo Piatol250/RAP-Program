@@ -72,7 +72,7 @@ namespace RAP_Program_WPF
                             Photo = rdr.GetString(8),
                             EmploymentLevel = ParseEnum<LEVEL>(rdr.GetString(11)),
                             CommencedWithInstitution = rdr.GetDateTime(12),
-                            Tenure = Math.Round(((Decimal)(DateTime.Today - rdr.GetDateTime(12)).TotalDays/365), 2)
+                            Tenure = Math.Round(((Decimal)(DateTime.Today - rdr.GetDateTime(12)).TotalDays/365), 2).ToString() + " years"
                         });
                     }
                     else if (rdr.GetString(1) == "Student")
@@ -90,7 +90,7 @@ namespace RAP_Program_WPF
                             Degree = rdr.GetString(9),
                             SupervisorID = rdr.GetInt32(10),
                             CommencedWithInstitution = rdr.GetDateTime(12),
-                            Tenure = Math.Round(((Decimal)(DateTime.Today - rdr.GetDateTime(12)).TotalDays / 365), 2)
+                            Tenure = Math.Round(((Decimal)(DateTime.Today - rdr.GetDateTime(12)).TotalDays / 365), 2).ToString() + " years"
                         });
                     }
                 }
