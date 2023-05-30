@@ -60,7 +60,7 @@ namespace RAP_WPF
         private void getCumulativeCount(object sender, RoutedEventArgs e)
         {
             string publications;
-            publications = string.Join(Environment.NewLine, researcherController.getCumulativeCount((Researcher)Count.DataContext));
+            publications = string.Join(Environment.NewLine, ((Researcher)(Count.DataContext)).CumulativeCount);
 
             MessageBox.Show(publications);
         }

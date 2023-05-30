@@ -25,7 +25,7 @@
 
         <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148" Height="23" KeyUp="searchBox_keyup"/>
 
-        <StackPanel x:Name ="DetailsPanel" Margin="265,-8,264,0" Width="268" Orientation="Vertical">
+        <StackPanel x:Name ="DetailsPanel" Margin="266,-8,247,0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name:"></Label>
                 <Label Content="{Binding Path=Given_Name}"></Label>
@@ -68,6 +68,12 @@
                 <Label Content="{Binding Tenure}"/>
                 <Label Content="Publications:"/>
                 <Label Content="{Binding NumPublications}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Three year average:"></Label>
+                <Label Content="{Binding Path=ThreeYearAverage }"></Label>
+                <Label Content="Performance:"></Label>
+                <Label Content="{Binding Path=Performance }"></Label>
             </StackPanel>
         </StackPanel>
 
