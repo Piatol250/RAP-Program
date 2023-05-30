@@ -20,7 +20,7 @@
         </ListBox>
 
         <ListBox x:Name ="researcherListBox" SelectionChanged="researcherListBox_SelectionChanged"
-                 d:ItemsSource="{Binding Source={StaticResource researcherList}}" Margin="1,23,694,4" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}" Grid.ColumnSpan="2"/>
+                 d:ItemsSource="{Binding Source={StaticResource researcherList}}" Margin="1,23,688,10" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}" Grid.ColumnSpan="2"/>
 
         <ComboBox HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Top" Width="120"
                   ItemsSource = "{Binding Source = {StaticResource Levels}}"
@@ -96,7 +96,7 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel x:Name ="PublicationDetailsPanel" Margin="502,12,32,0" Orientation="Vertical" Grid.Column="1">
+        <StackPanel x:Name ="PublicationDetailsPanel" Margin="502,0,0,300" Orientation="Vertical" Grid.Column="1">
             <TextBlock>
                 <TextBlock Text=" Title: "></TextBlock>
                 <TextBlock TextWrapping ="Wrap" Text="{Binding Path=Title }"></TextBlock>
@@ -117,10 +117,10 @@
                 <Label Content="Type:"></Label>
                 <Label Content="{Binding Path=Type }"></Label>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Cite as:"></Label>
-                <Label Content="{Binding Path=CiteAs }"></Label>
-            </StackPanel>
+            <TextBlock>
+                <TextBlock Text=" Cite as: "></TextBlock>
+                <TextBlock TextWrapping ="Wrap" Text="{Binding Path=CiteAs }"></TextBlock>
+            </TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Availability date:"></Label>
                 <Label Content="{Binding Path=AvailabilityDate }"></Label>
@@ -136,6 +136,6 @@
 
         <Button x:Name="Supervisions" Content="Show Names" HorizontalAlignment="Left" Margin="297,344,0,0" VerticalAlignment="Top" Click="getSuperVisions" RenderTransformOrigin="0.516,0.971" Width="58" Height="15" FontSize="9" Grid.Column="1"/>
 
-        <ListBox x:Name="Publications" Grid.Column="1" Margin="206,388,408,0" SelectionChanged="publicationListBox_SelectionChanged"/>
+        <ListBox x:Name="Publications" Grid.Column="1" Margin="206,388,0,10" SelectionChanged="publicationListBox_SelectionChanged"/>
     </Grid>
 </Window>

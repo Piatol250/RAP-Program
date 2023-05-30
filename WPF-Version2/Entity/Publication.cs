@@ -21,11 +21,11 @@ namespace RAP_Program_WPF
         public int PublicationYear { get; set; }
         public string CiteAs { get; set; }
         public DateTime AvailabilityDate { get; set; }
-        public int Age
+        public string Age
         {
             get
             {
-                return ((DateTime.Now.Year - AvailabilityDate.Year)*365) + ((DateTime.Now.Month - AvailabilityDate.Month)*30) + (DateTime.Now.Day - AvailabilityDate.Month);
+                return (((DateTime.Now.Year - AvailabilityDate.Year)*365) + ((DateTime.Now.Month - AvailabilityDate.Month)*30) + (DateTime.Now.Day - AvailabilityDate.Month)).ToString() + " " + "Days";
             }
             set { }
         }
