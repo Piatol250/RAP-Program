@@ -8,34 +8,6 @@ namespace RAP_WPF.Tests
 {
     internal class TestDriver
     {
-        public delegate bool RunFunc();
-
-        public class RunType
-        {
-            RunFunc func;
-            StackTrace stack;
-            string name;
-
-            public RunType(string name, RunFunc func)
-            {
-                this.name = name;
-                stack = new StackTrace();
-                this.func = func;
-            }
-
-            public bool Run()
-            {
-                return func();
-            }
-
-            public string ToString()
-            {
-                return "for " + name + "\n" + stack.ToString();
-            }
-
-
-        }
-
         private static List<RunType> CollectAll()
         {
             List<RunType> tests = new List<RunType>();
