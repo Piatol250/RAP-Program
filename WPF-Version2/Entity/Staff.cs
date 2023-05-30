@@ -10,7 +10,6 @@ namespace RAP_Program_WPF
     {
         private int pos;
         int count = 0;
-        public double Q1Percent { get; set; }
         public double FundingReceived { get; set; }
         public string PerformanceByPublication 
         { 

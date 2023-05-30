@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RAP_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="704" Width="988">
+        Title="MainWindow" Height="704" Width="983">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -77,6 +77,8 @@
                 <Label Content="{Binding Path=ThreeYearAverage }"></Label>
                 <Label Content="Performance:"></Label>
                 <Label Content="{Binding Path=Performance }"></Label>
+                <Label Content="Q1 Percent:"></Label>
+                <Label Content="{Binding Path=Q1Percent }"></Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Supervisions:"></Label>

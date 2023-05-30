@@ -132,6 +132,25 @@ namespace RAP_Program_WPF
             } 
             set { } 
         }
+
+        public string Q1Percent 
+        {   
+            get 
+            {
+                Decimal q1Count = 0M;
+
+                foreach(Publication pub in this.Publications)
+                {
+                    if(pub.Rank == RANKING.Q1)
+                    {
+                        q1Count++;
+                    }
+                }
+                return Math.Round(100*(q1Count/((Decimal)this.Publications.Count())), 1).ToString() + "%";
+            } 
+            set { } 
+        }
+
         public int getPubsInYear(int year)
         {
             int count = 0;
