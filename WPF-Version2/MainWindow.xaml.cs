@@ -53,17 +53,23 @@ namespace RAP_WPF
                 DetailsPanel.DataContext = e.AddedItems[0];
                 PositionList.ItemsSource = researcherController.getPositions(currResearcher);
                 image.Source = researcherController.getPhoto(currResearcher);
-                Count.DataContext = e.AddedItems[0];
             }
         }
 
         private void getCumulativeCount(object sender, RoutedEventArgs e)
         {
             string publications;
-            publications = string.Join(Environment.NewLine, ((Researcher)(Count.DataContext)).CumulativeCount);
+            publications = string.Join(Environment.NewLine, ((Researcher)(DetailsPanel.DataContext)).CumulativeCount);
 
             MessageBox.Show(publications);
         }
-        
+
+        private void getSuperVisions(object sender, RoutedEventArgs e)
+        {
+            string supervisions;
+            supervisions = string.Join(Environment.NewLine, ((Staff)(DetailsPanel.DataContext)).Supervisions);
+
+            MessageBox.Show(supervisions);
+        }
     }
 }

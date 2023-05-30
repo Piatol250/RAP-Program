@@ -10,6 +10,7 @@ namespace RAP_Program_WPF
     {
         public string Degree { get; set; }
         public int SupervisorID { get; set; }
+        public Staff Supervisor { get; set; }
 
     }
 }

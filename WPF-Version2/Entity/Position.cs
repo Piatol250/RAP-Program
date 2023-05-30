@@ -39,7 +39,7 @@ namespace RAP_Program_WPF
                     break;
             };
 
-            return start.ToShortDateString() + " " + title;
+            return start.ToShortDateString() + " " + end.ToShortDateString() + " " + title;
         }
     }
 

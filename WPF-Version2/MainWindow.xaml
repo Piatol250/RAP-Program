@@ -25,14 +25,14 @@
 
         <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148" Height="23" KeyUp="searchBox_keyup"/>
 
-        <StackPanel x:Name ="DetailsPanel" Margin="266,-8,247,0" Orientation="Vertical">
+        <StackPanel x:Name ="DetailsPanel" Margin="266,-8,109,0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name:"></Label>
                 <Label Content="{Binding Path=Given_Name}"></Label>
                 <Label Content = "{Binding Path=Family_Name}"></Label>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="268">
-                <Label Content="Title:"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Title:"></Label>
                 <Label Content="{Binding Title}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -75,11 +75,25 @@
                 <Label Content="Performance:"></Label>
                 <Label Content="{Binding Path=Performance }"></Label>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Supervisions:"></Label>
+                <Label Content="{Binding Path=SupervisionsCount }"></Label>
+                <Label Content="                   Performance by publication:"></Label>
+                <Label Content="{Binding Path=PerformanceByPublication }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Degree:"></Label>
+                <Label Content="{Binding Path=Degree }"></Label>
+                <Label Content="Supervisor:"></Label>
+                <Label Content="{Binding Path=Supervisor }"></Label>
+                <Label Content="Performance by funding:"></Label>
+                <Label Content="{Binding Path=PerformanceByFundingReceived  }"></Label>
+            </StackPanel>
         </StackPanel>
 
         <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="433,0,0,0" VerticalAlignment="Top" Width="101"/>
 
-        <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="477,290,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9"/>
-
+        <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="483,288,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9"/>
+        <Button x:Name="Supervisions" Content="Show Names" HorizontalAlignment="Left" Margin="357,344,0,0" VerticalAlignment="Top" Click="getSuperVisions" RenderTransformOrigin="0.516,0.971" Width="58" Height="15" FontSize="9"/>
     </Grid>
 </Window>

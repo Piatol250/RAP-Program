@@ -140,7 +140,7 @@ namespace RAP_Program_WPF
 
                     });
 
-                    if (rdr.GetValue(3) == null)
+                    if (!rdr.IsDBNull(3))
                     {
                         positions.Last().end = rdr.GetDateTime(3);
                     }

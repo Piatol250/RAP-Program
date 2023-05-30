@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -30,9 +31,37 @@ namespace RAP_Program_WPF
                 if(researcher.EmploymentLevel != LEVEL.Student)
                 {
                     ((Staff)researcher).FundingReceived = DBInterpreter.getFunding(researcher.Id);
+                    ((Staff)researcher).Supervisions = new List<Student>();
+
+                    foreach (Researcher student in researchers)
+                    {
+                        if(student.EmploymentLevel == LEVEL.Student && ((Student)(student)).SupervisorID == researcher.Id)
+                        {
+                            ((Staff)(researcher)).Supervisions.Add((Student)student);
+                        }   
+                    }
                 }
-                viewableResearchers = new ObservableCollection<Researcher>(researchers);
+                else
+                {
+                    ((Student)(researcher)).Supervisor = getStaffById(((Student)(researcher)).SupervisorID);
+                }
             }
+            viewableResearchers = new ObservableCollection<Researcher>(researchers);
+        }
+
+        public Staff getStaffById(int id)
+        {
+            Staff match = null;
+
+            foreach(Researcher researcher in researchers)
+            {
+                if(researcher.EmploymentLevel != LEVEL.Student && researcher.Id == id)
+                {
+                    match = (Staff)researcher;
+                }
+            }
+
+            return match;
         }
 
         public ObservableCollection<Researcher> GetViewableList()

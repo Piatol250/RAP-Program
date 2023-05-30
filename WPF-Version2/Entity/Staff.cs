@@ -12,9 +12,29 @@ namespace RAP_Program_WPF
         int count = 0;
         public double Q1Percent { get; set; }
         public double FundingReceived { get; set; }
-        public double PerformanceByPublication { get; set; }
-        public double PerformanceByFundingReceived { get; set; }
+        public string PerformanceByPublication 
+        { 
+            get 
+            {
+                Decimal tenure = (DateTime.Now.Year - this.CommencedWithInstitution.Year) - 2;
+                Decimal performance = Math.Round(((Decimal)this.NumPublications / tenure), 1);
+
+                return performance.ToString();    
+            }
+            set { } }
+        public string PerformanceByFundingReceived 
+        {
+            get 
+            {
+                Decimal tenure = (DateTime.Now.Year - this.CommencedWithInstitution.Year) - 2;
+                Decimal performance = Math.Round((Decimal)FundingReceived/tenure, 0);
+
+                return performance.ToString() + "AUD/yr";
+            }
+            set { } 
+        }
         public List<Student> Supervisions { get; set; }
 
+        public int SupervisionsCount { get { return Supervisions.Count();  } set { } }
     }
 }

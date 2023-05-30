@@ -123,12 +123,12 @@ namespace RAP_Program_WPF
                         expectedPubs = 3.2M;
                         break;
                     case LEVEL.E:
-                        expectedPubs = 0.5M;
+                        expectedPubs = 4M;
                         break;
                     default:
                         return "Unknown";
                 };
-                return Math.Round(100*(expectedPubs/ThreeYearAverage), 1).ToString() + "%"; 
+                return Math.Round(100*(ThreeYearAverage/expectedPubs), 1).ToString() + "%"; 
             } 
             set { } 
         }
