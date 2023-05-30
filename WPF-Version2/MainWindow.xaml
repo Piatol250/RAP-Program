@@ -93,12 +93,12 @@
                 <Label Content="{Binding Path=PerformanceByFundingReceived  }"></Label>
             </StackPanel>
         </StackPanel>
-        
-         <StackPanel x:Name ="PublicationDetailsPanel" Margin="499,-8,0,0" Orientation="Vertical" Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Title:"></Label>
-                <Label Content="{Binding Path=Title }"></Label>
-            </StackPanel>
+
+        <StackPanel x:Name ="PublicationDetailsPanel" Margin="502,12,32,0" Orientation="Vertical" Grid.Column="1">
+            <TextBlock>
+                <TextBlock Text=" Title: "></TextBlock>
+                <TextBlock TextWrapping ="Wrap" Text="{Binding Path=Title }"></TextBlock>
+            </TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Label Content="DOI:"></Label>
                 <Label Content="{Binding Path=Doi }"></Label>
@@ -128,7 +128,7 @@
                 <Label Content="{Binding Path=Age }"></Label>
             </StackPanel>
         </StackPanel>
-            <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="373,0,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
+        <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="373,0,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
 
         <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="423,288,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9" Grid.Column="1"/>
 

@@ -25,7 +25,7 @@ namespace RAP_Program_WPF
         {
             get
             {
-                return ((DateTime.Now.Year - AvailabilityDate.Year)*365) + ((DateTime.Now.Month - AvailabilityDate.Month)*30) + (DateTime.Now.Day - AvailabilityDate.Day);
+                return ((DateTime.Now.Year - AvailabilityDate.Year)*365) + ((DateTime.Now.Month - AvailabilityDate.Month)*30) + (DateTime.Now.Day - AvailabilityDate.Month);
             }
             set { }
         }
