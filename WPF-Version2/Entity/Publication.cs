@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Navigation;
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Entity
 {
     public enum RANKING { Q1, Q2, Q3, Q4 }
     public enum PUBTYPE { Conference, Journal, Other }

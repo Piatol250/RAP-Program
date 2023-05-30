@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RAP_Program_WPF
+namespace RAP_WPF.Entity
 {
     public enum LEVEL { Student, A, B, C, D, E }
     internal class Researcher
