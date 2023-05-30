@@ -30,12 +30,12 @@ namespace RAP_Program_WPF
                         Doi = rdr.GetString(0),
                         Title = rdr.GetString(1),
                         Rank = DBInterpreter.ParseEnum<RANKING>(rdr.GetString(2)),
-                        Authors = rdr.GetString(3).Replace(" ", string.Empty).Split(','),
+                        Authors = rdr.GetString(3),
                         PublicationDate = rdr.GetInt32(4),
                         Type = DBInterpreter.ParseEnum<PUBTYPE>(rdr.GetString(5)),
                         CiteAs = rdr.GetString(6),
                         AvailabilityDate = rdr.GetDateTime(7)
-                    });
+                    }) ;
                 }
             }
             catch (MySqlException e)
@@ -58,7 +58,16 @@ namespace RAP_Program_WPF
 
         }
 
-        
+        public List<Publication> sortPublications(Researcher researcher)
+        {
+            List<Publication> sorted = new List<Publication>();
+
+            sorted = researcher.Publications.OrderBy(x => x.PublicationDate)
+                                    .ThenBy(x => x.Title)
+                                    .ToList();
+
+            return sorted;
+        }
 
         public List<Publication> GetPublications(Researcher Current)
         {

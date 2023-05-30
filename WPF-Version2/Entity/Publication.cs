@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace RAP_Program_WPF
 {
@@ -15,17 +16,27 @@ namespace RAP_Program_WPF
         public RANKING Rank { get; set; }
         public PUBTYPE Type { get; set; }
         public string Title { get; set; }
-        public string[] Authors { get; set; }
+        public string Authors { get; set; }
         public string Doi { get; set; }
         public int PublicationDate { get; set; }
         public string CiteAs { get; set; }
         public DateTime AvailabilityDate { get; set; }
-        public int Age { get; set; }
+        public int Age
+        {
+            get
+            {
+                return DateTime.Now.Year - AvailabilityDate.Year;
+            }
+            set { }
+        }
 
         public override string ToString()
         {
-            return this.Title;
+            return PublicationDate + " " + Title;
         }
+        
+
 
     }
+    
 }

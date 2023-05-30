@@ -15,6 +15,7 @@ namespace RAP_WPF
     {
         private const string RESEARCHER_LIST_KEY = "researcherList"; //used to access the researchercontroller object
         private ResearcherController researcherController; //used to control a list of researchers, allows the filtering and creation of the list
+        private PublicationController publicationController = new PublicationController();
 
         public MainWindow()
         {
@@ -53,6 +54,7 @@ namespace RAP_WPF
                 DetailsPanel.DataContext = e.AddedItems[0];
                 PositionList.ItemsSource = researcherController.getPositions(currResearcher);
                 image.Source = researcherController.getPhoto(currResearcher);
+                Publications.ItemsSource = publicationController.sortPublications(currResearcher);
             }
         }
 
