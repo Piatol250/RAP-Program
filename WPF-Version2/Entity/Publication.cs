@@ -18,21 +18,21 @@ namespace RAP_Program_WPF
         public string Title { get; set; }
         public string Authors { get; set; }
         public string Doi { get; set; }
-        public int PublicationDate { get; set; }
+        public int PublicationYear { get; set; }
         public string CiteAs { get; set; }
         public DateTime AvailabilityDate { get; set; }
         public int Age
         {
             get
             {
-                return DateTime.Now.Year - AvailabilityDate.Year;
+                return ((DateTime.Now.Year - AvailabilityDate.Year)*365) + ((DateTime.Now.Month - AvailabilityDate.Month)*30) + (DateTime.Now.Day - AvailabilityDate.Day);
             }
             set { }
         }
 
         public override string ToString()
         {
-            return PublicationDate + " " + Title;
+            return PublicationYear + " " + Title;
         }
         
 

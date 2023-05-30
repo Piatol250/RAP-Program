@@ -31,7 +31,7 @@ namespace RAP_Program_WPF
                         Title = rdr.GetString(1),
                         Rank = DBInterpreter.ParseEnum<RANKING>(rdr.GetString(2)),
                         Authors = rdr.GetString(3),
-                        PublicationDate = rdr.GetInt32(4),
+                        PublicationYear = rdr.GetInt32(4),
                         Type = DBInterpreter.ParseEnum<PUBTYPE>(rdr.GetString(5)),
                         CiteAs = rdr.GetString(6),
                         AvailabilityDate = rdr.GetDateTime(7)
@@ -62,7 +62,7 @@ namespace RAP_Program_WPF
         {
             List<Publication> sorted = new List<Publication>();
 
-            sorted = researcher.Publications.OrderBy(x => x.PublicationDate)
+            sorted = researcher.Publications.OrderBy(x => x.PublicationYear)
                                     .ThenBy(x => x.Title)
                                     .ToList();
 

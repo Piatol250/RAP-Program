@@ -138,7 +138,7 @@ namespace RAP_Program_WPF
 
             foreach (Publication pub in Publications)
             {
-                if (pub.PublicationDate == year)
+                if (pub.PublicationYear == year)
                 {
                     count++;
                 }

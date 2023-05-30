@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RAP_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="704" Width="800">
+        Title="MainWindow" Height="704" Width="988">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="37*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name ="PositionList" Margin="208,229,264,385" Grid.Column="1">
+        <ListBox x:Name ="PositionList" Margin="206,229,408,385" Grid.Column="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
@@ -20,16 +20,15 @@
         </ListBox>
 
         <ListBox x:Name ="researcherListBox" SelectionChanged="researcherListBox_SelectionChanged"
-                 d:ItemsSource="{Binding Source={StaticResource researcherList}}" 
-                 Width="268" Margin="0,23,532,0" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}" Grid.ColumnSpan="2"/>
+                 d:ItemsSource="{Binding Source={StaticResource researcherList}}" Margin="1,23,694,4" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="88,0,0,0" VerticalAlignment="Top" Width="120"
+        <ComboBox HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Top" Width="120"
                   ItemsSource = "{Binding Source = {StaticResource Levels}}"
                   SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Height="23" Grid.Column="1"/>
 
-        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148" Height="23" KeyUp="searchBox_keyup" Grid.ColumnSpan="2"/>
+        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Height="23" KeyUp="searchBox_keyup" Grid.ColumnSpan="2"/>
 
-        <StackPanel x:Name ="DetailsPanel" Margin="206,-8,109,0" Orientation="Vertical" Grid.Column="1">
+        <StackPanel x:Name ="ResearcherDetailsPanel" Margin="206,-8,109,0" Orientation="Vertical" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name:"></Label>
                 <Label Content="{Binding Path=Given_Name}"></Label>
@@ -94,13 +93,47 @@
                 <Label Content="{Binding Path=PerformanceByFundingReceived  }"></Label>
             </StackPanel>
         </StackPanel>
-
-        <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="373,0,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
+        
+         <StackPanel x:Name ="PublicationDetailsPanel" Margin="499,-8,0,0" Orientation="Vertical" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Title:"></Label>
+                <Label Content="{Binding Path=Title }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="DOI:"></Label>
+                <Label Content="{Binding Path=Doi }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Publication year:"></Label>
+                <Label Content="{Binding Path=PublicationYear }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Ranking:"></Label>
+                <Label Content="{Binding Path=Rank }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Type:"></Label>
+                <Label Content="{Binding Path=Type }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Cite as:"></Label>
+                <Label Content="{Binding Path=CiteAs }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Availability date:"></Label>
+                <Label Content="{Binding Path=AvailabilityDate }"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Age:"></Label>
+                <Label Content="{Binding Path=Age }"></Label>
+            </StackPanel>
+        </StackPanel>
+            <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="373,0,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
 
         <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="423,288,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9" Grid.Column="1"/>
 
         <Button x:Name="Supervisions" Content="Show Names" HorizontalAlignment="Left" Margin="297,344,0,0" VerticalAlignment="Top" Click="getSuperVisions" RenderTransformOrigin="0.516,0.971" Width="58" Height="15" FontSize="9" Grid.Column="1"/>
 
-        <ListBox x:Name="Publications" Grid.Column="1" Margin="206,388,264,0"/>
+        <ListBox x:Name="Publications" Grid.Column="1" Margin="206,388,408,0" SelectionChanged="publicationListBox_SelectionChanged"/>
     </Grid>
 </Window>

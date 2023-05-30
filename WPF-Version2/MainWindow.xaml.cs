@@ -23,7 +23,7 @@ namespace RAP_WPF
             researcherController = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
         }
 
-        
+
         private void searchBox_keyup(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -50,18 +50,17 @@ namespace RAP_WPF
         {
             if (e.AddedItems.Count > 0)
             {
-                Researcher currResearcher = (Researcher)e.AddedItems[0];
-                DetailsPanel.DataContext = e.AddedItems[0];
-                PositionList.ItemsSource = researcherController.getPositions(currResearcher);
-                image.Source = researcherController.getPhoto(currResearcher);
-                Publications.ItemsSource = publicationController.sortPublications(currResearcher);
+                ResearcherDetailsPanel.DataContext = e.AddedItems[0];
+                PositionList.ItemsSource = researcherController.getPositions((Researcher)e.AddedItems[0]);
+                image.Source = researcherController.getPhoto((Researcher)e.AddedItems[0]);
+                Publications.ItemsSource = publicationController.sortPublications((Researcher)e.AddedItems[0]);
             }
         }
 
         private void getCumulativeCount(object sender, RoutedEventArgs e)
         {
             string publications;
-            publications = string.Join(Environment.NewLine, ((Researcher)(DetailsPanel.DataContext)).CumulativeCount);
+            publications = string.Join(Environment.NewLine, ((Researcher)(ResearcherDetailsPanel.DataContext)).CumulativeCount);
 
             MessageBox.Show(publications);
         }
@@ -69,9 +68,17 @@ namespace RAP_WPF
         private void getSuperVisions(object sender, RoutedEventArgs e)
         {
             string supervisions;
-            supervisions = string.Join(Environment.NewLine, ((Staff)(DetailsPanel.DataContext)).Supervisions);
+            supervisions = string.Join(Environment.NewLine, ((Staff)(ResearcherDetailsPanel.DataContext)).Supervisions);
 
             MessageBox.Show(supervisions);
+        }
+
+        public void publicationListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                PublicationDetailsPanel.DataContext = e.AddedItems[0];  
+            }
         }
     }
 }
