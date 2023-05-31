@@ -164,7 +164,7 @@ namespace RAP_WPF.Entity
         }
         public override string ToString()
         {
-            return Title + " " + Given_Name + " " + Family_Name;
+            return Family_Name + ", " + Given_Name + " (" + Title + ")";
         }
 
 

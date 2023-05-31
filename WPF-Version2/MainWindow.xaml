@@ -130,7 +130,7 @@
                 <Label Content="{Binding Path=Age }"></Label>
             </StackPanel>
         </StackPanel>
-        <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="373,0,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
+        <Image x:Name ="image" HorizontalAlignment="Left" Height="96" Margin="389,0,0,0" VerticalAlignment="Top" Width="117" Grid.Column="1"/>
 
         <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="423,288,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9" Grid.Column="1"/>
 
