@@ -12,7 +12,8 @@ namespace RAP_WPF.Entity
         public EMPLOYMENTlEVEL Level { get; set; }
         public DateTime start { get; set; }
         public DateTime end { get; set; }
-
+        
+        //Summary: Converts employment level enum to matching job title
         public override string ToString()
         {
             string title;
