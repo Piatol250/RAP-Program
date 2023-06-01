@@ -95,8 +95,8 @@ namespace RAP_WPF.Controller
             
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(researcher.Photo, UriKind.Absolute);
-            bitmap.DecodePixelHeight = 101;
-            bitmap.DecodePixelWidth = 90;
+            bitmap.DecodePixelHeight = 117;
+            bitmap.DecodePixelWidth = 96;
             bitmap.EndInit();
            
             return bitmap;

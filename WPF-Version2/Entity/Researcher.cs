@@ -18,31 +18,29 @@ namespace RAP_WPF.Entity
         public string Campus { get; set; }
         public string Email { get; set; }
         public string Photo { get; set; }
-        public string JobtTitle
+        private static List<string> all_levels = new List<string>()
         {
-            get {
-                switch (EmploymentLevel)
-                {
-                    case LEVEL.Student:
-                        return "Student";
-                    case LEVEL.A:
-                        return "Research Associate";
-                    case LEVEL.B:
-                        return "Lecturer";
-                    case LEVEL.C:
-                        return "Assistant Professor";
-                    case LEVEL.D:
-                        return "Associate Professor";
-                    case LEVEL.E:
-                        return "Professor";
-                    default:
-                        return "Unknown";
-                };
-            }
-            set
+            "Student",
+            "Research Associate",
+            "Lecturer",
+            "Assistant Professor",
+            "Associate Professor",
+            "Professor"
+        };
+        public static LEVEL ConvertLevelStringToEnum(string level)
+        {
+            for(int i = 0; i < all_levels.Count; i++)
             {
+                if (all_levels[i] == level)
+                {
+                    return (LEVEL)i;
+                }
             }
+
+            throw new Exception("tried to convert invalid level string");
         }
+        public List<string> GetAllLevels() { return all_levels; }
+        public string JobTitle { get { return all_levels[(int)EmploymentLevel]; } set { } }
         public int NumPublications { get { return Publications.Count; } set { } }
         public string Tenure { get; set; }
         public DateTime CommencedWithInstitution { get; set; }
@@ -120,7 +118,7 @@ namespace RAP_WPF.Entity
         }
         public override string ToString()
         {
-            return Title + " " + Given_Name + " " + Family_Name;
+            return Family_Name + ", " + Given_Name + " (" + Title + ")";
         }
 
 

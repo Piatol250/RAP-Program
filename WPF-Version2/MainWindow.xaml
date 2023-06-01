@@ -22,11 +22,11 @@
         <ListBox x:Name ="researcherListBox" SelectionChanged="researcherListBox_SelectionChanged"
                  d:ItemsSource="{Binding Source={StaticResource researcherList}}" Margin="0,43,689,10" ItemsSource="{Binding Mode=OneWay, Source={StaticResource researcherList}}" Grid.ColumnSpan="2"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="86,0,0,0" VerticalAlignment="Top" Width="120"
-                  ItemsSource = "{Binding Source = {StaticResource Levels}}"
+        <ComboBox HorizontalAlignment="Left" Margin="66,0,0,0" VerticalAlignment="Top" Width="140"
+                  ItemsSource = "{Binding Source = {StaticResource researcherLevelsList}}"
                   SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Height="23" Grid.Column="1"/>
 
-        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Height="23" KeyUp="searchBox_keyup" Grid.ColumnSpan="2"/>
+        <TextBox x:Name ="searchBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" Height="23" KeyUp="searchBox_keyup" Grid.ColumnSpan="2"/>
 
         <StackPanel x:Name ="ResearcherDetailsPanel" Margin="206,-8,109,0" Orientation="Vertical" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
@@ -97,40 +97,40 @@
         </StackPanel>
 
         <StackPanel x:Name ="PublicationDetailsPanel" Margin="502,0,0,300" Orientation="Vertical" Grid.Column="1">
-            <TextBlock>
-                <TextBlock Text=" Title: "></TextBlock>
-                <TextBlock TextWrapping ="Wrap" Text="{Binding Path=Title }"></TextBlock>
+            <StackPanel Margin="0,0,0,10" Orientation="Vertical">
+                <TextBlock Text="Title: "></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Title }"></TextBlock>
+            </StackPanel>
+            <TextBlock Margin="0,0,0,10">
+                <TextBlock Text="DOI:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Doi }"></TextBlock>
             </TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="DOI:"></Label>
-                <Label Content="{Binding Path=Doi }"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Publication year:"></Label>
-                <Label Content="{Binding Path=PublicationYear }"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Ranking:"></Label>
-                <Label Content="{Binding Path=Rank }"></Label>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Type:"></Label>
-                <Label Content="{Binding Path=Type }"></Label>
-            </StackPanel>
-            <TextBlock>
-                <TextBlock Text=" Cite as: "></TextBlock>
-                <TextBlock TextWrapping ="Wrap" Text="{Binding Path=CiteAs }"></TextBlock>
+            <TextBlock Margin="0,0,0,10">
+                <TextBlock Text="Publication year:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=PublicationYear }"></TextBlock>
             </TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Availability date:"></Label>
-                <Label Content="{Binding Path=AvailabilityDate }"></Label>
+            <TextBlock Margin="0,0,0,10">
+                <TextBlock Text="Ranking:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Rank }"></TextBlock>
+            </TextBlock>
+            <TextBlock Margin="0,0,0,10">
+                <TextBlock Text="Type:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Type }"></TextBlock>
+            </TextBlock>
+            <StackPanel Margin="0,0,0,10" Orientation="Vertical">
+                <TextBlock Text="Cite as: "></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=CiteAs }"></TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Age:"></Label>
-                <Label Content="{Binding Path=Age }"></Label>
-            </StackPanel>
+            <TextBlock Margin="0,0,0,10">
+                <TextBlock Text="Availability date:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=AvailabilityDate }"></TextBlock>
+            </TextBlock>
+            <TextBlock Margin="0,0,0,10">
+                <TextBlock Text="Age:"></TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Age }"></TextBlock>
+            </TextBlock>
         </StackPanel>
-        <Image x:Name ="image" HorizontalAlignment="Left" Height="90" Margin="373,0,0,0" VerticalAlignment="Top" Width="101" Grid.Column="1"/>
+        <Image x:Name ="image" HorizontalAlignment="Left" Height="96" Margin="389,0,0,0" VerticalAlignment="Top" Width="117" Grid.Column="1"/>
 
         <Button x:Name="Count" Content="Cumulative Count" HorizontalAlignment="Left" Margin="423,288,0,0" VerticalAlignment="Top" Click="getCumulativeCount" RenderTransformOrigin="0.516,0.971" Width="76" Height="15" FontSize="9" Grid.Column="1"/>
 
