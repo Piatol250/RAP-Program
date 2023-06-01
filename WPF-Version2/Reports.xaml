@@ -10,25 +10,25 @@
         <TabItem Header="Star Performers">
             <Grid Height="410" Margin="0,0,-2,0">
                 <ListBox x:Name="Star" Margin="0,22,0,0"/>
-                <Button x:Name="StarEmails" Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+                <Button x:Name="StarEmails" Content="Copy Emails" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="69" Click="copyEmails"/>
             </Grid>
         </TabItem>
         <TabItem Header="Meeting Minimum">
             <Grid Height="410" Margin="0,0,-2,0">
                 <ListBox x:Name="Min" Margin="0,22,0,0"></ListBox>
-                <Button x:Name="MinEmails" Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+                <Button x:Name="MinEmails" Content="Copy Emails" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="69" Click="copyEmails"/>
             </Grid>
         </TabItem>
         <TabItem Header="Below Expectations">
             <Grid Height="410" Margin="0,0,-2,0">
                 <ListBox x:Name="Below" Margin="0,22,0,0"></ListBox>
-                <Button x:Name="BelowEmails" Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+                <Button x:Name="BelowEmails" Content="Copy Emails" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="69" Click="copyEmails"/>
             </Grid>
         </TabItem>
         <TabItem Header="Poor">
             <Grid Height="410" Margin="0,0,-2,0">
                 <ListBox x:Name="Poor" Margin="0,22,0,0"></ListBox>
-                <Button x:Name="PoorEmails"  Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+                <Button x:Name="PoorEmails"  Content="Copy Emails" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="69" Click="copyEmails"/>
             </Grid>
         </TabItem>
     </TabControl>
