@@ -1,10 +1,12 @@
 ﻿using RAP_WPF;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using WPF_Version2;
 
 namespace RAP_WPF
 {
@@ -72,6 +74,24 @@ namespace RAP_WPF
 
             MessageBox.Show(supervisions);
         }
+
+        private void getReports(object sender, RoutedEventArgs e)
+        {
+            Reports reports = new Reports();
+            Tuple<List<string>, List<string>> stars = researcherController.getPerformanceReport((decimal)200.0, Decimal.MaxValue);
+            Tuple<List<string>, List<string>> mins = researcherController.getPerformanceReport((decimal)110.0, (decimal)200.0);
+            Tuple<List<string>, List<string>> belows = researcherController.getPerformanceReport((decimal)70.0, (decimal)110.0);
+            Tuple<List<string>, List<string>> poors = researcherController.getPerformanceReport(0, (decimal)70.0);
+            reports.Star.ItemsSource = stars.Item1;
+            reports.Min.ItemsSource = mins.Item1;
+            reports.Below.ItemsSource = belows.Item1;
+            reports.Poor.ItemsSource = poors.Item1;
+            reports.StarEmails.DataContext = stars.Item2;
+            reports.MinEmails.DataContext = mins.Item2;
+            reports.BelowEmails.DataContext = belows.Item2;
+            reports.PoorEmails.DataContext = poors.Item2;
+            reports.Show();
+        }    
 
         public void publicationListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

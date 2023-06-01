@@ -1,7 +1,9 @@
-﻿using System;
+﻿using RAP_WPF.Entity;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -51,7 +53,7 @@ namespace RAP_WPF.Controller
 
         public Entity.Staff getStaffById(int id)
         {
-            Entity.Staff match = null;
+            Entity.Staff match = new Entity.Staff();
 
             foreach(Entity.Researcher researcher in researchers)
             {
@@ -66,7 +68,6 @@ namespace RAP_WPF.Controller
 
         public ObservableCollection<Entity.Researcher> GetViewableList()
         {
-            Console.WriteLine(VisibleResearchers);
             return VisibleResearchers;
         }
 
@@ -118,6 +119,49 @@ namespace RAP_WPF.Controller
                            select researcher;
             viewableResearchers.Clear();
             filtered.ToList().ForEach(viewableResearchers.Add);
+        }
+
+        public Tuple<List<string>, List<string>> getPerformanceReport(Decimal performanceLower, Decimal performanceUpper)
+        {
+            Decimal performance;
+            List<Entity.Staff> matchingStaff = new List<Entity.Staff>();
+            List<string> orderedPerformances = new List<string>();
+            List<string> emails = new List<string>();   
+            Tuple<List<string>, List<string>> combo;
+
+            foreach (Entity.Researcher researcher in researchers)
+            {
+                if(researcher.EmploymentLevel != Entity.LEVEL.Student)
+                {
+                    performance = Decimal.Parse(((Entity.Staff)(researcher)).Performance.Replace("%", ""));
+                    Console.WriteLine(performanceLower <= performance && performance < performanceUpper);
+
+                    if (performanceLower <= performance && performance < performanceUpper)
+                    {
+                        matchingStaff.Add((Entity.Staff)researcher);
+                    }
+                }
+            }
+            matchingStaff = matchingStaff.OrderBy(x => Decimal.Parse(x.Performance.Replace("%", "")))
+                                    .ToList();
+
+            foreach(Entity.Staff staff in matchingStaff)
+            {
+                orderedPerformances.Add(staff.Performance + "\t" + staff.Given_Name + " " + staff.Family_Name);
+                emails.Add(staff.Email);
+            }
+
+            if(performanceLower == (Decimal)70.0 || performanceUpper == (Decimal)70.0)
+            {
+            }
+            else
+            {
+                orderedPerformances.Reverse();
+            }
+
+            combo = new Tuple<List<string>, List<string>>(orderedPerformances, emails);
+
+            return combo;
         }
 
     }

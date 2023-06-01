@@ -1,0 +1,35 @@
+﻿<Window x:Class="WPF_Version2.Reports"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Version2"
+        mc:Ignorable="d"
+        Title="Reports" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Star Performers">
+            <Grid Height="410" Margin="0,0,-2,0">
+                <ListBox x:Name="Star" Margin="0,22,0,0"/>
+                <Button x:Name="StarEmails" Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Meeting Minimum">
+            <Grid Height="410" Margin="0,0,-2,0">
+                <ListBox x:Name="Min" Margin="0,22,0,0"></ListBox>
+                <Button x:Name="MinEmails" Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Below Expectations">
+            <Grid Height="410" Margin="0,0,-2,0">
+                <ListBox x:Name="Below" Margin="0,22,0,0"></ListBox>
+                <Button x:Name="BelowEmails" Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Poor">
+            <Grid Height="410" Margin="0,0,-2,0">
+                <ListBox x:Name="Poor" Margin="0,22,0,0"></ListBox>
+                <Button x:Name="PoorEmails"  Content="Copy Emails" HorizontalAlignment="Left" Margin="0,-3,0,0" VerticalAlignment="Top" Height="25" Width="69" Click="copyEmails"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

@@ -7,10 +7,23 @@ using System.Threading.Tasks;
 namespace RAP_WPF.Entity
 {
     internal class Staff : Researcher
-    {
-        private int pos;
-        int count = 0;
+    { 
         public double FundingReceived { get; set; }
+        public Decimal ThreeYearAverage
+        {
+
+            get
+            {
+                Decimal sum = 0;
+
+                for (int count = 0; count < 3; count++)
+                {
+                    sum += getPubsInYear(DateTime.Now.Year - count - 2);
+                }
+                return Math.Round((sum / 3), 2);
+            }
+            set { }
+        }
         public string PerformanceByPublication 
         { 
             get 
@@ -31,6 +44,38 @@ namespace RAP_WPF.Entity
                 return performance.ToString() + "AUD/yr";
             }
             set { } 
+        }
+        public string Performance
+        {
+            get
+            {
+                Decimal expectedPubs;
+
+                switch (EmploymentLevel)
+                {
+                    case LEVEL.Student:
+                        return "None";
+                    case LEVEL.A:
+                        expectedPubs = 0.5M;
+                        break;
+                    case LEVEL.B:
+                        expectedPubs = 1M;
+                        break;
+                    case LEVEL.C:
+                        expectedPubs = 2M;
+                        break;
+                    case LEVEL.D:
+                        expectedPubs = 3.2M;
+                        break;
+                    case LEVEL.E:
+                        expectedPubs = 4M;
+                        break;
+                    default:
+                        return "Unknown";
+                };
+                return Math.Round(100 * (ThreeYearAverage / expectedPubs), 1).ToString() + "%";
+            }
+            set { }
         }
         public List<Student> Supervisions { get; set; }
 

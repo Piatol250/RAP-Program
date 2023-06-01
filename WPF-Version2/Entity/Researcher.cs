@@ -49,34 +49,19 @@ namespace RAP_WPF.Entity
         public DateTime CommencedCurrentPostion
         { get
             {
-                DateTime lastPos = CommencedWithInstitution;
+                DateTime lastDate = CommencedWithInstitution;
 
                 for (int pos = 0; pos < Positions.Count; pos++)
                 {
                     if (pos == Positions.Count - 1)
                     {
-                        lastPos = Positions[pos].start;
+                        lastDate = Positions[pos].start;
                     }
                 }
-                return lastPos;
+                return lastDate;
             } set { } }
         public List<Position> Positions { get; set; }
         public List<Publication> Publications;
-        public Decimal ThreeYearAverage 
-        { 
-           
-            get 
-            {
-                Decimal sum = 0;
-
-                for(int count = 0; count < 3;  count++)
-                {
-                    sum += getPubsInYear(DateTime.Now.Year - count - 2);    
-                }
-                return Math.Round((sum / 3), 2);
-            } 
-            set { } 
-        }
         public List<string> CumulativeCount
         {
             get
@@ -100,37 +85,6 @@ namespace RAP_WPF.Entity
                 return cumulativeCount;
             }
             set { }
-        }
-        public string Performance
-        { 
-            get {
-                Decimal expectedPubs;
-
-                switch (EmploymentLevel)
-                {
-                    case LEVEL.Student:
-                        return "None";
-                    case LEVEL.A:
-                        expectedPubs = 0.5M;
-                        break;
-                    case LEVEL.B:
-                        expectedPubs = 1M;
-                        break;
-                    case LEVEL.C:
-                        expectedPubs = 2M;
-                        break;
-                    case LEVEL.D:
-                        expectedPubs = 3.2M;
-                        break;
-                    case LEVEL.E:
-                        expectedPubs = 4M;
-                        break;
-                    default:
-                        return "Unknown";
-                };
-                return Math.Round(100*(ThreeYearAverage/expectedPubs), 1).ToString() + "%"; 
-            } 
-            set { } 
         }
 
         public string Q1Percent 
