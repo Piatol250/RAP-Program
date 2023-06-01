@@ -20,7 +20,7 @@ namespace RAP_WPF.Data
         private static MySqlConnection conn = null;
         private static readonly string fundingLocation = "../../../Data/Fundings_Rankings.xml";
         private static XmlDocument fundingData = new XmlDocument();
-        
+        //Connection to database
        
         public static T ParseEnum<T>(string value)
         {
