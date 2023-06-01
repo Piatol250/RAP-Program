@@ -61,6 +61,7 @@ namespace RAP_WPF
                 PositionList.ItemsSource = researcherController.getPositions((Entity.Researcher)e.AddedItems[0]);
                 image.Source = researcherController.getPhoto((Entity.Researcher)e.AddedItems[0]);
                 Publications.ItemsSource = publicationController.sortPublications((Entity.Researcher)e.AddedItems[0]);
+                PublicationDetailsPanel.DataContext = null;
             }
         }
 
