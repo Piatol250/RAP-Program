@@ -35,8 +35,12 @@ namespace WPF_Version2
             {
                 emails = string.Join(" ", myObject);
                 Clipboard.SetText(emails);
+                MessageBox.Show("Emails successfully copied");
             }
-
+            else
+            {
+                MessageBox.Show("Emails failed to be copied");
+            }
 
         }
     }
