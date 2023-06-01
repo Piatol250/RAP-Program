@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Version2"
         mc:Ignorable="d"
-        Title="Reports" Height="450" Width="800">
+        Title="Reports" Height="450" Width="377">
     <TabControl>
         <TabItem Header="Star Performers">
             <Grid Height="410" Margin="0,0,-2,0">
