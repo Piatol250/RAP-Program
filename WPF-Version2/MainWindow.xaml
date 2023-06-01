@@ -52,7 +52,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Current Job:"></Label>
-                <Label Content="{Binding Path=JobtTitle }"></Label>
+                <Label Content="{Binding Path=JobTitle }"></Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Commenced with insitution:"></Label>
