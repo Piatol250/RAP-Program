@@ -34,6 +34,11 @@ namespace RAP_WPF
             }
         }
 
+        public void clearBox(object sender, RoutedEventArgs e)
+        {
+            searchBox.Text = string.Empty;
+        }
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count > 0)
